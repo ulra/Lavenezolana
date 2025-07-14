@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_poliza" model="ir.actions.report">
+        <field name="name">Póliza de Seguro</field>
+        <field name="model">vzla.poliza</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">vzla.report_poliza</field>
+        <field name="report_file">vzla.report_poliza</field>
+        <field name="binding_model_id" ref="model_vzla_poliza"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_poliza">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="poliza">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 class="text-center">PÓLIZA DE SEGURO</h2>
+                        
+                        <h4>DATOS DEL TOMADOR</h4>
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <strong>Tomador:</strong> <span t-field="poliza.tomador_id.name"/><br/>
+                                <strong>Cédula/RIF:</strong> <span t-field="poliza.tomador_id.cedula_rif"/><br/>
+                                <strong>Teléfono:</strong> <span t-field="poliza.tomador_id.telefono"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Dirección:</strong> <span t-field="poliza.tomador_id.direccion"/>
+                            </div>
+                        </div>
+
+                        <h4 class="mt-4">DATOS DE LA PÓLIZA</h4>
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <strong>Número:</strong> <span t-field="poliza.name"/><br/>
+                                <strong>Fecha Inicio:</strong> <span t-field="poliza.fecha_inicio"/><br/>
+                                <strong>Fecha Fin:</strong> <span t-field="poliza.fecha_fin"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Tipo de Pago:</strong> <span t-field="poliza.tipo_pago"/><br/>
+                                <strong>Frecuencia:</strong> <span t-field="poliza.frecuencia_pago"/><br/>
+                                <strong>Moneda:</strong> <span t-field="poliza.moneda"/>
+                            </div>
+                        </div>
+
+                        <t t-if="poliza.vehiculo_id">
+                            <h4 class="mt-4">DATOS DEL VEHÍCULO</h4>
+                            <div class="row mt-4">
+                                <div class="col-6">
+                                    <strong>Marca:</strong> <span t-field="poliza.vehiculo_id.marca"/><br/>
+                                    <strong>Modelo:</strong> <span t-field="poliza.vehiculo_id.modelo"/><br/>
+                                    <strong>Año:</strong> <span t-field="poliza.vehiculo_id.ano"/><br/>
+                                    <strong>Color:</strong> <span t-field="poliza.vehiculo_id.color"/>
+                                </div>
+                                <div class="col-6">
+                                    <strong>Placa:</strong> <span t-field="poliza.vehiculo_id.placa"/><br/>
+                                    <strong>Serial Motor:</strong> <span t-field="poliza.vehiculo_id.serial_motor"/><br/>
+                                    <strong>Serial Carrocería:</strong> <span t-field="poliza.vehiculo_id.serial_carroceria"/><br/>
+                                    <strong>Uso:</strong> <span t-field="poliza.vehiculo_id.uso"/>
+                                </div>
+                            </div>
+                        </t>
+
+                        <h4 class="mt-4">COBERTURAS</h4>
+                        <table class="table table-sm mt-4">
+                            <thead>
+                                <tr>
+                                    <th>Cobertura</th>
+                                    <th class="text-right">Suma Asegurada</th>
+                                    <th class="text-right">Prima</th>
+                                    <th class="text-right">Deducible</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="poliza.cobertura_ids" t-as="cobertura">
+                                    <td><span t-field="cobertura.name"/></td>
+                                    <td class="text-right"><span t-field="cobertura.suma_asegurada"/></td>
+                                    <td class="text-right"><span t-field="cobertura.prima"/></td>
+                                    <td class="text-right"><span t-field="cobertura.deducible"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="paperformat_carnet_rc" model="report.paperformat">
+        <field name="name">Formato Carnet RC</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">80</field>
+        <field name="page_width">130</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">3</field>
+        <field name="margin_bottom">3</field>
+        <field name="margin_left">3</field>
+        <field name="margin_right">3</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="action_report_carnet_rc" model="ir.actions.report">
+        <field name="name">Carnet de Responsabilidad Civil</field>
+        <field name="model">vzla.poliza</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">vzla.report_carnet_rc</field>
+        <field name="report_file">vzla.report_carnet_rc</field>
+        <field name="paperformat_id" ref="paperformat_carnet_rc"/>
+        <field name="binding_model_id" ref="model_vzla_poliza"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_carnet_rc">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="poliza">
+                <div class="page" style="font-family: Arial; font-size: 10px;">
+                    <div style="border: 1px solid black; padding: 5px;">
+                        <div style="text-align: center; font-weight: bold; font-size: 12px;">
+                            CARNET DE RESPONSABILIDAD CIVIL
+                        </div>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td><strong>Nº Póliza:</strong></td>
+                                <td><span t-field="poliza.name"/></td>
+                                <td><strong>Asegurado:</strong></td>
+                                <td><span t-field="poliza.tomador_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>CI/RIF:</strong></td>
+                                <td><span t-field="poliza.tomador_id.cedula_rif"/></td>
+                                <td><strong>Teléfono:</strong></td>
+                                <td><span t-field="poliza.tomador_id.telefono"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Inicio:</strong></td>
+                                <td><span t-field="poliza.fecha_inicio" t-options='{"format": "dd/MM/yyyy"}'/></td>
+                                <td><strong>Fin:</strong></td>
+                                <td><span t-field="poliza.fecha_fin" t-options='{"format": "dd/MM/yyyy"}'/></td>
+                            </tr>
+                        </table>
+                        <t t-if="poliza.vehiculo_id">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td><strong>Marca:</strong></td>
+                                    <td><span t-field="poliza.vehiculo_id.marca"/></td>
+                                    <td><strong>Modelo:</strong></td>
+                                    <td><span t-field="poliza.vehiculo_id.modelo"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Placa:</strong></td>
+                                    <td><span t-field="poliza.vehiculo_id.placa"/></td>
+                                    <td><strong>Color:</strong></td>
+                                    <td><span t-field="poliza.vehiculo_id.color"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Serial Carrocería:</strong></td>
+                                    <td colspan="3"><span t-field="poliza.vehiculo_id.serial_carroceria"/></td>
+                                </tr>
+                            </table>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

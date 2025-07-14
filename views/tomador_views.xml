@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista de formulario para Tomador -->
+    <record id="view_tomador_form" model="ir.ui.view">
+        <field name="name">vzla.tomador.form</field>
+        <field name="model">vzla.tomador</field>
+        <field name="arch" type="xml">
+            <form string="Tomador de Seguro">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="cedula_rif"/>
+                            <field name="telefono"/>
+                        </group>
+                        <group>
+                            <field name="asegurado"/>
+                            <field name="asegurado_cedula_rif"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="direccion"/>
+                    </group>
+                    <notebook>
+                        <page string="Pólizas">
+                            <field name="poliza_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de árbol para Tomador -->
+    <record id="view_tomador_tree" model="ir.ui.view">
+        <field name="name">vzla.tomador.tree</field>
+        <field name="model">vzla.tomador</field>
+        <field name="arch" type="xml">
+            <tree string="Tomadores de Seguro">
+                <field name="name"/>
+                <field name="cedula_rif"/>
+                <field name="telefono"/>
+                <field name="asegurado"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Acción de ventana para Tomador -->
+    <record id="action_tomador" model="ir.actions.act_window">
+        <field name="name">Tomadores de Seguro</field>
+        <field name="res_model">vzla.tomador</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Registre su primer tomador de seguro
+            </p>
+        </field>
+    </record>
+
+    <!-- Elemento de menú para Tomador -->
+    <menuitem id="menu_vzla_root" 
+              name="La Venezolana Seguros"
+              sequence="10"/>
+
+    <menuitem id="menu_vzla_tomador"
+              name="Tomadores"
+              parent="menu_vzla_root"
+              action="action_tomador"
+              sequence="10"/>
+</odoo>

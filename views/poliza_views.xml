@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista de formulario para Póliza -->
+    <record id="view_poliza_form" model="ir.ui.view">
+        <field name="name">vzla.poliza.form</field>
+        <field name="model">vzla.poliza</field>
+        <field name="arch" type="xml">
+            <form string="Póliza de Seguro">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="borrador,vigente,vencida,cancelada"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Número de Póliza"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="tomador_id"/>
+                            <field name="fecha_inicio"/>
+                            <field name="fecha_fin"/>
+                            <field name="tipo_pago"/>
+                        </group>
+                        <group>
+                            <field name="sucursal"/>
+                            <field name="canal_venta"/>
+                            <field name="frecuencia_pago"/>
+                            <field name="codigo_intermediario"/>
+                            <field name="participacion"/>
+                            <field name="moneda"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Vehículo" name="vehiculo">
+                            <field name="vehiculo_id" mode="tree,form">
+                                <tree>
+                                    <field name="marca"/>
+                                    <field name="modelo"/>
+                                    <field name="placa"/>
+                                    <field name="ano"/>
+                                    <field name="color"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="marca"/>
+                                            <field name="modelo"/>
+                                            <field name="version"/>
+                                            <field name="ano"/>
+                                            <field name="tipo"/>
+                                            <field name="puestos"/>
+                                        </group>
+                                        <group>
+                                            <field name="placa"/>
+                                            <field name="serial_motor"/>
+                                            <field name="serial_carroceria"/>
+                                            <field name="uso"/>
+                                            <field name="color"/>
+                                        </group>
+                                    </group>
+                                    <field name="otros"/>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Coberturas" name="coberturas">
+                            <field name="cobertura_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="suma_asegurada"/>
+                                    <field name="prima"/>
+                                    <field name="deducible"/>
+                                    <field name="activa"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Recibos" name="recibos">
+                            <field name="recibo_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="fecha_inicio"/>
+                                    <field name="fecha_fin"/>
+                                    <field name="tipo_movimiento"/>
+                                    <field name="total_pagar"/>
+                                    <field name="estado"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de árbol para Póliza -->
+    <record id="view_poliza_tree" model="ir.ui.view">
+        <field name="name">vzla.poliza.tree</field>
+        <field name="model">vzla.poliza</field>
+        <field name="arch" type="xml">
+            <tree string="Pólizas de Seguro" decoration-info="state=='borrador'" decoration-success="state=='vigente'" decoration-danger="state=='vencida'">
+                <field name="name"/>
+                <field name="tomador_id"/>
+                <field name="fecha_inicio"/>
+                <field name="fecha_fin"/>
+                <field name="tipo_pago"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista Calendario -->
+    <record id="view_poliza_calendar" model="ir.ui.view">
+        <field name="name">vzla.poliza.calendar</field>
+        <field name="model">vzla.poliza</field>
+        <field name="arch" type="xml">
+            <calendar string="Calendario de Pólizas" 
+                     date_start="fecha_inicio"
+                     date_stop="fecha_fin"
+                     color="color"
+                     mode="month">
+                <field name="name"/>
+                <field name="tomador_id"/>
+                <field name="state"/>
+                <field name="dias_vencimiento"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Vista Dashboard/Kanban -->
+    <record id="view_poliza_dashboard" model="ir.ui.view">
+        <field name="name">vzla.poliza.dashboard</field>
+        <field name="model">vzla.poliza</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard" create="0">
+                <field name="name"/>
+                <field name="tomador_id"/>
+                <field name="state"/>
+                <field name="prima_total"/>
+                <field name="cantidad_recibos"/>
+                <field name="dias_vencimiento"/>
+                <field name="color"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <strong>Póliza: <field name="name"/></strong>
+                                    </div>
+                                    <div class="col-6">
+                                        <span class="float-right badge badge-pill" t-attf-class="badge-#{record.state.raw_value == 'vigente' ? 'success' : 'danger'}">
+                                            <field name="state"/>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-12">
+                                        <strong>Tomador:</strong> <field name="tomador_id"/>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-6">
+                                        <strong>Prima Total:</strong>
+                                        <field name="prima_total" widget="monetary"/>
+                                    </div>
+                                    <div class="col-6">
+                                        <strong>Recibos:</strong>
+                                        <field name="cantidad_recibos"/>
+                                    </div>
+                                </div>
+                                <div class="row mt-2" t-if="record.dias_vencimiento.raw_value >= 0">
+                                    <div class="col-12">
+                                        <span t-attf-class="badge badge-pill #{record.dias_vencimiento.raw_value <= 30 ? 'badge-warning' : 'badge-info'}">
+                                            Días para vencer: <field name="dias_vencimiento"/>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </templates>
+                </kanban>
+            </field>
+    </record>
+
+    <!-- Actualizar la acción de ventana para incluir las nuevas vistas -->
+    <record id="action_poliza" model="ir.actions.act_window">
+        <field name="name">Pólizas</field>
+        <field name="res_model">vzla.poliza</field>
+        <field name="view_mode">tree,form,calendar,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primera póliza
+            </p>
+        </field>
+    </record>
+
+    <!-- Elemento de menú para Póliza -->
+    <menuitem id="menu_vzla_poliza"
+              name="Pólizas"
+              parent="menu_vzla_root"
+              action="action_poliza"
+              sequence="20"/>
+</odoo>

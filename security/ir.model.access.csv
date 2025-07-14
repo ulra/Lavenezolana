@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+vzla_tomador_user,Tomador User Access,model_vzla_tomador,group_vzla_user,1,1,1,0
+vzla_tomador_manager,Tomador Manager Access,model_vzla_tomador,group_vzla_manager,1,1,1,1
+vzla_poliza_user,Poliza User Access,model_vzla_poliza,group_vzla_user,1,1,1,0
+vzla_poliza_manager,Poliza Manager Access,model_vzla_poliza,group_vzla_manager,1,1,1,1
+vzla_vehiculo_user,Vehiculo User Access,model_vzla_vehiculo,group_vzla_user,1,1,1,0
+vzla_vehiculo_manager,Vehiculo Manager Access,model_vzla_vehiculo,group_vzla_manager,1,1,1,1
+vzla_cobertura_user,Cobertura User Access,model_vzla_cobertura,group_vzla_user,1,1,1,0
+vzla_cobertura_manager,Cobertura Manager Access,model_vzla_cobertura,group_vzla_manager,1,1,1,1
+vzla_recibo_user,Recibo User Access,model_vzla_recibo,group_vzla_user,1,1,1,0
+vzla_recibo_manager,Recibo Manager Access,model_vzla_recibo,group_vzla_manager,1,1,1,1

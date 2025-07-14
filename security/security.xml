@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="module_category_vzla" model="ir.module.category">
+        <field name="name">La Venezolana Seguros</field>
+        <field name="description">Gestión de Pólizas de Seguros</field>
+    </record>
+
+    <!-- Grupo de Usuario -->
+    <record id="group_vzla_user" model="res.groups">
+        <field name="name">Usuario</field>
+        <field name="category_id" ref="module_category_vzla"/>
+    </record>
+
+    <!-- Grupo de Gerente -->
+    <record id="group_vzla_manager" model="res.groups">
+        <field name="name">Gerente</field>
+        <field name="category_id" ref="module_category_vzla"/>
+        <field name="implied_ids" eval="[(4, ref('group_vzla_user'))]"/>
+    </record>
+</odoo>

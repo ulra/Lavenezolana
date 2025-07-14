@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista de formulario para Vehículo -->
+    <record id="view_vehiculo_form" model="ir.ui.view">
+        <field name="name">vzla.vehiculo.form</field>
+        <field name="model">vzla.vehiculo</field>
+        <field name="arch" type="xml">
+            <form string="Vehículo">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="marca"/>
+                            <field name="modelo"/>
+                            <field name="version"/>
+                            <field name="ano"/>
+                            <field name="tipo"/>
+                            <field name="puestos"/>
+                        </group>
+                        <group>
+                            <field name="placa"/>
+                            <field name="serial_motor"/>
+                            <field name="serial_carroceria"/>
+                            <field name="uso"/>
+                            <field name="color"/>
+                        </group>
+                    </group>
+                    <field name="otros"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de árbol para Vehículo -->
+    <record id="view_vehiculo_tree" model="ir.ui.view">
+        <field name="name">vzla.vehiculo.tree</field>
+        <field name="model">vzla.vehiculo</field>
+        <field name="arch" type="xml">
+            <tree string="Vehículos">
+                <field name="marca"/>
+                <field name="modelo"/>
+                <field name="placa"/>
+                <field name="ano"/>
+                <field name="color"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
