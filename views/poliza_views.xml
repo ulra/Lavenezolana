@@ -177,7 +177,8 @@
                                 </div>
                             </div>
                         </div>
-                    </templates>
+                    </t>
+                </templates>
                 </kanban>
             </field>
     </record>
