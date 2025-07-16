@@ -141,14 +141,14 @@
                 <field name="color"/>
                 <templates>
                     <t t-name="kanban-box">
-                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                        <div class="oe_kanban_card oe_kanban_global_click">
                             <div class="oe_kanban_content">
                                 <div class="row">
                                     <div class="col-6">
                                         <strong>Póliza: <field name="name"/></strong>
                                     </div>
                                     <div class="col-6">
-                                        <span class="float-right badge badge-pill" t-att-class="record.state.raw_value == 'vigente' ? 'badge-success' : 'badge-danger'">
+                                        <span t-att-class="'float-right badge badge-pill ' + (record.state.raw_value == 'vigente' ? 'badge-success' : 'badge-danger')">
                                             <field name="state"/>
                                         </span>
                                     </div>
@@ -179,8 +179,8 @@
                         </div>
                     </t>
                 </templates>
-                </kanban>
-            </field>
+            </kanban>
+        </field>
     </record>
 
     <!-- Actualizar la acción de ventana para incluir las nuevas vistas -->
