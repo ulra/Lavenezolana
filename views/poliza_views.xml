@@ -148,7 +148,7 @@
                                         <strong>Póliza: <field name="name"/></strong>
                                     </div>
                                     <div class="col-6">
-                                        <span t-att-class="['float-right', 'badge', 'badge-pill', record.state.raw_value == 'vigente' ? 'badge-success' : 'badge-danger']">
+                                        <span t-attf-class="float-right badge badge-pill #{record.state.raw_value == 'vigente' ? 'badge-success' : 'badge-danger'}">
                                             <field name="state"/>
                                         </span>
                                     </div>
@@ -168,9 +168,9 @@
                                         <field name="cantidad_recibos"/>
                                     </div>
                                 </div>
-                                <div class="row mt-2" t-if="record.dias_vencimiento.raw_value >= 0">
+                                <div class="row mt-2" t-if="record.dias_vencimiento.raw_value &gt;= 0">
                                     <div class="col-12">
-                                        <span t-att-class="['badge', 'badge-pill', record.dias_vencimiento.raw_value <= 30 ? 'badge-warning' : 'badge-info']">
+                                        <span t-attf-class="badge badge-pill #{record.dias_vencimiento.raw_value &lt;= 30 ? 'badge-warning' : 'badge-info'}">
                                             Días para vencer: <field name="dias_vencimiento"/>
                                         </span>
                                     </div>
