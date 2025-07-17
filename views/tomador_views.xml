@@ -60,6 +60,7 @@
     <!-- Elemento de menú para Tomador -->
     <menuitem id="menu_vzla_root" 
               name="La Venezolana Seguros"
+              web_icon="fa fa-shield"
               sequence="10"/>
 
     <menuitem id="menu_vzla_tomador"
