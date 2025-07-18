@@ -1,6 +1,6 @@
 {
     'name': 'La Venezolana Seguros',
-    'version': '1.0',
+    'version': '17.0.1.0.0',
     'summary': 'Gestión de Pólizas de Seguros',
     'description': 'Módulo para gestionar pólizas de seguros de La Venezolana',
     'category': 'Insurance',
