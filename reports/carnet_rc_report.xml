@@ -20,8 +20,8 @@
         <field name="name">Carnet de Responsabilidad Civil</field>
         <field name="model">vzla.poliza</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">vzla.report_carnet_rc</field>
-        <field name="report_file">vzla.report_carnet_rc</field>
+        <field name="report_name">lavenezolana.report_carnet_rc</field>
+        <field name="report_file">lavenezolana.report_carnet_rc</field>
         <field name="paperformat_id" ref="paperformat_carnet_rc"/>
         <field name="binding_model_id" ref="model_vzla_poliza"/>
         <field name="binding_type">report</field>
