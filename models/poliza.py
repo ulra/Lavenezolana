@@ -86,11 +86,11 @@ class Poliza(models.Model):
 
     def generar_carnet_rc(self):
         self.ensure_one()
-        return self.env.ref('vzla.action_report_carnet_rc').report_action(self)
+        return self.env.ref('laVenezolana.action_report_carnet_rc').report_action(self)
 
     def generar_poliza_pdf(self):
         self.ensure_one()
-        return self.env.ref('vzla.action_report_poliza').report_action(self)
+        return self.env.ref('laVenezolana.action_report_poliza').report_action(self)
 
     @api.model
     def create(self, vals):
