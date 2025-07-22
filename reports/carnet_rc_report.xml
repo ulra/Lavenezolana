@@ -27,7 +27,7 @@
         <field name="binding_type">report</field>
     </record>
 
-    <template id="vzla.report_carnet_rc">
+    <template id="report_carnet_rc">
         <t t-call="web.basic_layout">
             <t t-foreach="docs" t-as="poliza">
                 <div class="page" style="font-family: Arial; font-size: 10px;">
