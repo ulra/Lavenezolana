@@ -10,7 +10,7 @@
         <field name="binding_type">report</field>
     </record>
 
-    <template id="report_poliza">
+    <template id="report_poliza" name="laVenezolana.report_poliza" primary="True">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="poliza">
                 <t t-call="web.external_layout">
