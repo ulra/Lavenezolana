@@ -17,6 +17,7 @@
         'views/vehiculo_views.xml',
         'views/cobertura_views.xml',
         'reports/carnet_rc_report.xml',
+        'reports/poliza_report.xml',  # Agregada esta línea
     ],
     'installable': True,
     'application': True,
