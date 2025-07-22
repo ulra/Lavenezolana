@@ -48,7 +48,7 @@ class Poliza(models.Model):
     @api.depends('recibo_ids')
     def _compute_prima_total(self):
         for record in self:
-            record.prima_total = sum(recibo.monto for recibo in record.recibo_ids)
+            record.prima_total = sum(recibo.total_pagar for recibo in record.recibo_ids)
 
     @api.depends('recibo_ids')
     def _compute_cantidad_recibos(self):
