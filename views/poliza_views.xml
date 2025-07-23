@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <data>
     <!-- Vista de formulario para Póliza -->
     <record id="view_poliza_form" model="ir.ui.view">
         <field name="name">vzla.poliza.form</field>
@@ -198,6 +199,7 @@
     <!-- Elemento de menú para Póliza -->
     <menuitem id="menu_vzla_poliza"
               name="Pólizas"
+    </data>
               parent="menu_vzla_root"
               action="action_poliza"
               sequence="20"/>
