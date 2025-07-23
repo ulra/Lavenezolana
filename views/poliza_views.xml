@@ -199,8 +199,8 @@
     <!-- Elemento de menú para Póliza -->
     <menuitem id="menu_vzla_poliza"
               name="Pólizas"
-    </data>
               parent="menu_vzla_root"
-              action="action_poliza"
+              action="action_poliza"/>
+    </data>
               sequence="20"/>
 </odoo>
