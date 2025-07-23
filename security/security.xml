@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <data>
     <record id="module_category_vzla" model="ir.module.category">
         <field name="name">La Venezolana Seguros</field>
         <field name="description">Gestión de Pólizas de Seguros</field>
@@ -17,4 +18,5 @@
         <field name="category_id" ref="module_category_vzla"/>
         <field name="implied_ids" eval="[(4, ref('group_vzla_user'))]"/>
     </record>
+    </data>
 </odoo>
