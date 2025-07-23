@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <data>
     <!-- Vista de formulario para Vehículo -->
     <record id="view_vehiculo_form" model="ir.ui.view">
         <field name="name">vzla.vehiculo.form</field>
@@ -44,4 +45,5 @@
             </tree>
         </field>
     </record>
+    </data>
 </odoo>

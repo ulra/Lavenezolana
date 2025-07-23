@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <data>
     <!-- Vista de formulario para Tomador -->
     <record id="view_tomador_form" model="ir.ui.view">
         <field name="name">vzla.tomador.form</field>
@@ -68,4 +69,5 @@
               parent="menu_vzla_root"
               action="action_tomador"
               sequence="10"/>
+    </data>
 </odoo>
