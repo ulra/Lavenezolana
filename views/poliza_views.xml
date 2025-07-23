@@ -200,7 +200,7 @@
     <menuitem id="menu_vzla_poliza"
               name="Pólizas"
               parent="menu_vzla_root"
-              action="action_poliza"/>
-    </data>
+              action="action_poliza"
               sequence="20"/>
+    </data>
 </odoo>
